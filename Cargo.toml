@@ -8,8 +8,6 @@ name = "rubikscube"
 crate-type = ["cdylib", "rlib"]
 
 
-
-
 [dependencies]
 rand = {version = "0.8.5"}
 strum = "0.24"
@@ -28,7 +26,6 @@ name = "turn_bench"
 harness = false
 
 [features]
-default = ["python"]
 python = ["pyo3", "numpy"]
 
 [profile.release]

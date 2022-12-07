@@ -42,6 +42,10 @@ impl PyCube {
         self.0.scramble(num_turns);
     }
 
+    fn get_turns(&self) -> PyResult<Vec<PyTurn>> {
+        Ok(self.1.to_vec())
+    }
+
     fn turn(&mut self, twist: u8) -> PyResult<()> {
         if let Err(err) = self.0.turn(twist) {
             Err(PyIndexError::new_err(err.to_string()))

@@ -33,7 +33,7 @@ impl PyCube {
 
     #[classmethod]
     fn cube_qtm(_py: &PyType) -> Self {
-        let quarter_turns = Self::all_possible_turns().unwrap()[1..12].to_vec();
+        let quarter_turns = Self::all_possible_turns().unwrap()[..12].to_vec();
         PyCube(Cube::cube_qtm(), quarter_turns)
     }
 

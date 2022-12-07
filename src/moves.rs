@@ -18,7 +18,7 @@ impl Display for MetricKind {
     }
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Copy, Clone)]
 #[repr(u8)]
 pub enum Turn {
     L,  // Clockwise Left turn

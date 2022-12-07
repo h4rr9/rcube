@@ -33,7 +33,8 @@ impl PyCube {
 
     #[classmethod]
     fn cube_qtm(_py: &PyType) -> Self {
-        PyCube(Cube::cube_qtm(), Self::all_possible_turns().unwrap())
+        let quarter_turns = Self::all_possible_turns().unwrap()[1..12].to_vec();
+        PyCube(Cube::cube_qtm(), quarter_turns)
     }
 
     #[args(num_turns = "100")]
@@ -136,11 +137,16 @@ impl PyMetric {
 
 #[cfg(feature = "python")]
 #[pyclass(name = "Turn")]
+#[derive(Clone)]
 struct PyTurn(Turn);
 
 #[cfg(feature = "python")]
 #[pymethods]
 impl PyTurn {
+    fn to_int(&self) -> u8 {
+        self.0 as u8
+    }
+
     fn __str__(&self) -> String {
         format!("{}", self.0)
     }
